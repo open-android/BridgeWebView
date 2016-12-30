@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color>
+    <drawable name="transparent">@color/transparent</drawable>
+    <color name="btn_white">#eeffffff</color>
+    <color name="btn_light">#eed2d2d2</color>
+    <drawable name="line">#a2a2a2</drawable>
+    <color name="text_color">#1482fd</color>
+</resources>

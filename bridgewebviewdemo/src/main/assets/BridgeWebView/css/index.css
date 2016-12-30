@@ -1,0 +1,86 @@
+@charset "utf-8";
+@font-face {font-family:'CustomClock'; src:url('clock.ttf#CustomClock') format('truetype');}
+* {padding:0; margin:0;}
+em, i, strong, b, cite, dfn, code{font-style:normal;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;color:#000;font-size:13px;}
+a {text-decoration:none;}
+img {border:none;width:100%;}
+ul, ol, li {list-style:none;}
+body{-webkit-user-select:none; -webkit-touch-callout:none; -webkit-tap-highlight-color:rgba(0, 0, 0, 0); -webkit-font-smoothing:antialiased;padding:0 0 7px; background-color:#eff1f3; font-family:"黑体-简", Avenir, Arial, "Helvetica Neue", Helvetica, sans-serif,"黑体"; font-size:13px; color:#595959;}
+/* 0.5像素灰线 */
+.splitLine, body > section, body > section:before, body > section > article {background-image:url(../images/hline_light.png); background-repeat:repeat-x; background-position:left bottom; background-size:100% 1px;}
+body > section {position:relative; margin-top:15px; background-color:white;}
+section > h1 {height:42px;line-height:42px;position:relative;font-size:14px;padding-left:13px;}
+section > h1:before {content:""; display:block; position:absolute; top:100%; left:0; width:100%; height:1px; background:#e0e0e0;}
+section > h1:last-child:before {display:none;}
+section > h1 > b {font-size:14px; color:#4c90f9; float:right;line-height:18px;margin-right:22px;margin-top:12px;}
+.redCount,section > h1 > i {font-size:11px;color:#fff;background-color:#de2020;padding:2px 5px;border-radius:40px; float:right;margin-top:12px;margin-right:30px;height:15px;line-height:15px;}
+	
+body > section.notop {margin-top:0;}
+body > section:before {content:""; display:block; width:100%; position:absolute; left:0; top:0; height:1px; overflow:hidden;}
+body > section > article {margin-left:13px; padding:13px;padding-left:0px;}
+body > section > article:nth-last-child(1),body > section > article.nobottom{background:none;}
+body > section > h2 {padding:0 13px; height:38px; line-height:38px; font-size:14px;}
+.more {position: relative;}
+.more:after {content:""; display:block; position:absolute; right:0px; top:50%; margin-top:-5px; width:6px; height:10px; background:url(../images/arr_gr.png) no-repeat; background-size:6px 10px;}
+
+
+#orderForm {padding:8px 0;}
+#orderForm h4 {font-size:15px;line-height:31px;padding:0 13px;}
+#orderForm div {padding:0 13px;line-height:31px;}
+#orderForm span {font-size:12px;background:url(../images/clock.png) no-repeat left center;background-size:9px;padding-left:12px;}
+#orderForm span:nth-last-child(1) {margin-left:35px;}
+
+#roomInfo article {font-size: 14px;color:#555;}
+#roomInfo article span{display:inline-block;width: 126px;}
+#roomInfo article div{position: relative;left:0;}
+#roomInfo article h5{display: inline;font-size:14px;color:#3494ff;}
+#roomInfo article input{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);border:0;font-size:14px;outline: none;height:18px;}
+#roomInfo i,#customerInfo i {font-size:14px;color:#3494ff;}
+#roomInfo select,#customerInfo select {-webkit-appearance: none;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 160px;border: 0;outline: none;position: absolute;top: 0;left: 126px;opacity: 0;}
+
+#customerInfo article {font-size: 14px;color:#555;}
+#customerInfo article span{display:inline-block;width: 126px;}
+#customerInfo article div{position: relative;left:0;}
+#customerInfo article h5{display: inline;color:#3494ff;}
+#customerInfo article input{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);border:0;font-size:14px;outline: none;height:18px;}
+#customerInfo h2 {padding: 0 13px;color: #5c5b5f;font-size: 12px;background-color: #e5e5e5;height: 36px;line-height: 36px;}
+
+#reminderInfo {padding: 0 13px 12px 13px;background-color:#fff;border-bottom: 1px solid #cacaca;}
+#reminderInfo h4 {font-size:14px;line-height:40px;}
+#reminderInfo span {font-size:12px;line-height:150%;}
+
+#orderSubmit {width:100%;padding: 4px 0px 8px 0px;position: relative;background-color:#5c6168;}
+#orderSubmit h3 {font-size:20px;color:#fff;padding-left:75px;line-height:30px;}
+#orderSubmit h3:before{content:"到店现付 ￥"; position:absolute; left:13px; top:6px; color:#fff; font-size:12px; text-align:center;}
+#orderSubmit div {position: relative;color:#f6712a;}
+#orderSubmit div span {padding-left:50px;}
+#orderSubmit div span:before{content:"可返￥"; position:absolute; left:13px; top:0px; font-size:12px; text-align:center;}
+#orderSubmit div a{color:#f6712a;background:url(../images/arr_top.png) no-repeat right center;background-size:9px 5px;margin-left:15px;padding-right:12px;}
+#orderSubmit button{-webkit-appearance: none;position: absolute;right: 13px;top: 16px;width:85px;height:25px;border-radius: 12px;border: 0;background-color:#f6712a;font-size:14px;color:#fff;outline: none;}
+
+
+
+#orderInfo {background-color:#f6712a;font-size:14px;color:#fff;padding:10px 13px;line-height:180%;}
+#orderInfo div span,#payInfo article span {display: inline-block;text-align: right;width: 70px;}
+#orderInfo div i {}
+
+#payInfo {color: #555;}
+#payInfo article i {color:#000;}
+#payInfo .payback i,#payInfo .payback a {color:#f6712a;}
+#payInfo .payback a {float:right;}
+
+#businessInfo h4 {color:#000;font-size:14px;line-height:20px;margin-bottom: 8px;}
+#businessInfo p {font-size:13px;line-height:150%;}
+#businessInfo .more h5 {color:#f6712a;}
+
+#contactInfo {font-size:14px;}
+#contactInfo span {display: inline-block;color:#555;width:70px;text-align:right;}
+#contactInfo i {color:#000;}
+
+#qaInfo {margin-bottom:54px;}
+#planChangeInfo h5,#qaInfo h5 {color:#555;font-size:14px;}
+#planChangeInfo div,#qaInfo div {color:#555;font-size:14px;background:url(../images/telphone.png) no-repeat left center;background-size:16px 16px;padding-left:25px;}
+
+#orderEntry {position:fixed;bottom:0;width: 100%;background-color:#5e646a;}
+#orderEntry a {display: block;text-align: center;margin: 10px 13px;background-color: #f6712a;height: 34px;line-height: 34px;border-radius: 5px;font-size: 17px;color: #fff;}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--屏幕适配：viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="js/jquery.min.js"></script>
+    <title>js和android通信</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: 400 14px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;
+        }
+
+        button{
+            border-style: none;
+            width: 94%;
+            border-radius: 8px;
+            background-color: #28daff;
+            margin-top: 10px;
+            margin-left: 3%;
+            margin-right: 3%;
+            height: 42px;
+            font-size: 18px;
+            color: white;
+        }
+
+        button:active{
+            background-color: #18b0ff;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn1">js调用android拨号</button>
+    <button id="btn2">H5调用QQ分享</button>
+    <button id="btn3">H5详情页（callback式调用安卓）</button>
+
+<script>
+
+    var action = "";//分发动作：该参数为了便于android统一管理所有方法，具体看android代码
+
+    $("#btn1").on("click", function(){
+        console.log("callphone");
+        var method = "send";//js调用的android方法名
+        action = "callPhone";//打电话动作
+        var params = {"phone":"10086", "callback":"", "action":action};//android接收参数，json格式
+        callAndroidMethod(method, params);
+    });
+
+    $("#btn2").on("click", function(){
+        console.log("share2QQ");
+        //分享内容
+        action = "share2QQ";//分享动作
+        var params = {
+            "action":action,
+            "url": "http://3g.163.com/touch/article.html?channel=war&offset=16&docid=C49SUHR6000181KT&version=gll",
+            "title": "俄媒:2016珠海航展俄将带来200余件军用装备",
+            "summary": "参考消息网10月25日报道 俄媒称，俄联邦军事技术合作局新闻办公室25日向记者透露，约50家俄罗斯国防工业企业和非军工企业将参加2016年的中国国际航空航天博览会，展出220多件军用产品。",
+            "imgUrl": "http://cms-bucket.nosdn.127.net/catchpic/8/8e/8e3665378407ee2b4f33011bd072b314.jpg"
+        };
+        var method = "send";//js调用的android方法名
+        //调用android方法分享到QQ
+        callAndroidMethod(method, params);
+    });
+
+    $("#btn3").on("click", function(){
+        //页面跳转
+        location.href = "orderDetail.html";
+    });
+
+    /**
+     * 统一管理js调用安卓方法
+     * @param method 方法名
+     * @param params 参数 数组格式
+     */
+    var callAndroidMethod = function(method, params){
+        window.jsInterface.invokeMethod(method, [JSON.stringify(params)]);//json对象转成字符串，再转成字符串数组
+    }
+</script>
+</body>
+
+</html>

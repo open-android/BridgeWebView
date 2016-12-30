@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/transparent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <Button
+        android:background="@drawable/btn_radius_top_selector"
+        android:text="拨打电话"
+        style="@style/btn_style" />
+
+    <View style="@style/divider"/>
+
+    <Button
+        android:id="@+id/btnPhone"
+        android:background="@drawable/btn_radius_bottom_selector"
+        android:text="10086"
+        style="@style/btn_style" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:background="@drawable/btn_radius_selector"
+        android:text="取消"
+        android:layout_marginTop="8dp"
+        style="@style/btn_style" />
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>下单成功</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+</head>
+<body id="wrapper">
+
+<section id="orderInfo" class="notop">
+    <div><span>订单状态：</span><i>AA</i></div>
+    <div><span>订单号：</span><i>BB</i></div>
+    <div><span>代理商：</span><i>CC</i></div>
+    <div><span>最晚到店：</span><i>DD</i></div>
+</section>
+
+<section id="payInfo">
+    <article><span>订单总价：</span><i>EE</i></article>
+    <article class="payback"><span>可返现：</span><i>108</i><a href="javascript:void(0);">如何领取返现</a>
+    </article>
+    <article><span>付款方式：</span><i>99</i></article>
+</section>
+
+<section id="businessInfo">
+    <article><h4>7天酒店</h4>
+        <p>3个</p>
+        <p>入住：2016.10.28&nbsp;&nbsp;&nbsp;&nbsp;离店：2016.10.29</p>
+        <p>房间数：3</p></article>
+    <article>
+        <div class="more"><h5>带我去酒店</h5></div>
+    </article>
+</section>
+
+<section id="contactInfo">
+    <article><span>联系人：</span><i>马芸</i></article>
+    <article><span>联系方式：</span><i class="phone">8888888888</i></article>
+</section>
+
+<section id="planChangeInfo">
+    <article><h5>入住计划变更请致电酒店前台</h5></article>
+    <article>
+        <div class="more phone">8888</div>
+    </article>
+</section>
+
+<section id="qaInfo">
+    <article><h5>酒店订单有问题请拨打同城旅行电话</h5></article>
+    <article>
+        <div class="more phone">8888888</div>
+    </article>
+</section>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+
+    /**
+     * 统一管理js调用安卓方法
+     * @param method 方法名
+     * @param params 参数 数组格式
+     */
+    var callAndroidMethod = function(method, params){
+        window.jsInterface.invokeMethod(method, [JSON.stringify(params)]);//json对象转成字符串，再转成字符串数组
+    }
+
+
+    var params = {"action":"getHotelData","callback": "rendDetail"};
+    var method = "send";
+    //调用android方法：callback是安卓回调js的方法名，
+    callAndroidMethod(method, params);
+
+
+
+    /**回调方法，当安卓获取json数据后，回调该方法，给js传递数据，H5显示页面*/
+    function rendDetail(json) {
+        console.log("js收到android回调=" + json);
+        //订单信息
+        var orderInfo = '<section id="orderInfo" class="notop"><div><span>订单状态：</span><i>' + json.order_status + '</i></div><div><span>订单号：</span><i>' + json.orderId + '</i></div><div><span>代理商：</span><i>' + json.seller + '</i></div><div><span>最晚到店：</span><i>' + json.expire_time + '</i></div></section>';
+        //支付信息
+        var payInfo = ' <section id="payInfo"><article><span>订单总价：</span><i>￥' + json.price + '</i></article><article class="payback"><span>可返现：</span><i>￥' + json.back_price + '</i><a href="javascript:void(0);">如何领取返现</a></article><article><span>付款方式：</span><i>' + json.pay_tpye + '</i></article></section>';
+        //商家信息
+        var businessInfo = '<section id="businessInfo"><article><h4>' + json.hotel_name + '</h4><p>' + json.room_size + '</p><p>入住：' + json.in_date + '&nbsp;&nbsp;&nbsp;&nbsp;离店：' + json.out_date + '</p><p>房间数：' + json.room_count + '</p></article><article><div class="more"><h5>带我去酒店</h5></div></article></section>';
+        //联系人
+        var contactInfo = ' <section id="contactInfo"><article><span>联系人：</span><i>' + json.contact + '</i></article><article><span>联系方式：</span><i class="phone">' + json.phone + '</i></article></section>';
+        //酒店服务
+        var hotelServer = ' <section id="planChangeInfo"><article><h5>入住计划变更请致电酒店前台</h5></article><article><div class="more phone">' + json.server_phone + '</div></article></section>';
+        //商家信息
+        var sellerInfo = '<section id="qaInfo"><article><h5>酒店订单有问题请拨打携程旅行电话</h5></article><article><div class="more phone">' + json.server_phone + '</div></article></section>';
+
+        //刷新页面
+        $("#wrapper").html(orderInfo + payInfo + businessInfo + contactInfo + hotelServer + sellerInfo);
+
+
+        $(".phone").click("touch", function () {
+//            alert($(this).text());
+            var params = {"phone": $(this).text(), "action":"showCallPhoneDialog"};//底部弹出拨号对话框
+
+            callAndroidMethod(method, params);
+        });
+    }
+</script>
+</html>
