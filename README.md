@@ -9,7 +9,7 @@
 
 ![](screenshot2.gif)
 
-* 更多干货请下载app
+* 爱生活,爱学习,更爱做代码的搬运工,分类查找更方便请下载黑马助手app
 
 
 ![黑马助手.png](http://upload-images.jianshu.io/upload_images/4037105-f777f1214328dcc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
